@@ -8,5 +8,4 @@
     "esModuleInterop": true,
     "moduleResolution": "node10"
   },
-  "include": ["src", "global.d.ts"]
 }
