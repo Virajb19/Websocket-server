@@ -1,11 +1,11 @@
-// import { Redis } from '@upstash/redis'
+// import { Redis as upstashRedis } from '@upstash/redis'
 import { Redis } from "ioredis";
 
 export let redis: Redis
 
 if(process.env.NODE_ENV === 'production') {
     redis = new Redis({
-        host: process.env.UPSTASH_REDIS_REST_URL as string,
+        host: process.env.UPSTASH_REDIS_REST_URL!.replace("https://", ""),
         password: process.env.UPSTASH_REDIS_REST_TOKEN!,
         tls: {}
     })
@@ -17,9 +17,15 @@ if(process.env.NODE_ENV === 'production') {
 }
 
 // export const redis = process.env.NODE_ENV === 'production'
-//    ? new Redis
+//    ? new upstashRedis({
+//         url: process.env.UPSTASH_REDIS_REST_URL as string,
+//         token: process.env.UPSTASH_REDIS_REST_TOKEN!
+//    }) : new Redis({
+//         host: 'localhost',
+//         port: 6379
+//    })
 
-// export const redis = new Redis({
+// // export const redis = new upstashRedis({
 //     url: process.env.UPSTASH_REDIS_REST_URL as string,
-//     token: process.env.UPSTASH_REDIS_REST_TOKEN
+//     token: process.env.UPSTASH_REDIS_REST_TOKEN!,
 // })

@@ -1,22 +1,13 @@
+import dotenv from "dotenv";
+dotenv.config()
 import express, { Request, Response} from 'express'
-import { Server, Socket } from 'socket.io'
+import { Server } from 'socket.io'
 import http from 'http'
 import cors from 'cors'
-import dotenv from "dotenv";
 import { instrument } from '@socket.io/admin-ui'
 import { createAdapter } from "@socket.io/redis-streams-adapter";
 import { redis } from './redis'
 import { setUpSocketServer } from './socket';
-
-dotenv.config()
-
-// declare module "socket.io" {
-//    interface Handshake {
-//       auth: {
-//          chatId?: string
-//       }
-//    }
-// }
 
 const app = express()
 const server = http.createServer(app)

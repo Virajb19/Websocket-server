@@ -1,10 +1,17 @@
 import { Server, Socket } from 'socket.io'
-import { instrument } from '@socket.io/admin-ui'
-import { createAdapter } from "@socket.io/redis-streams-adapter";
 
 interface CustomSocket extends Socket {
     room?: string
  }
+
+// declare module "socket.io" {
+//    interface Handshake {
+//       auth: {
+//          chatId?: string
+//       }
+//    }
+// }
+
 
 export function setUpSocketServer(io: Server) {
       

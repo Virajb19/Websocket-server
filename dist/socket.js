@@ -1,6 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.setUpSocketServer = setUpSocketServer;
+// declare module "socket.io" {
+//    interface Handshake {
+//       auth: {
+//          chatId?: string
+//       }
+//    }
+// }
 function setUpSocketServer(io) {
     io.use((socket, next) => {
         // const { chatId } = socket.handshake.auth
