@@ -67,6 +67,8 @@ export function setUpSocketServer(io: Server) {
       })
    
       socket.on('delete:chat', (name: string) => {
+         console.log(name)
+         console.log(`User ${socket.id} is in rooms:`, socket.rooms)
          socket.to(chatId).emit('delete:chat', name) 
       })
  
